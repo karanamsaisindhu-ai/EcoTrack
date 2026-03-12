@@ -1,28 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>EcoTrack</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>EcoTrack</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
+<!-- LOGIN SCREEN -->
 
-        <h1>🌱 EcoTrack</h1>
-        <p>Track your daily eco-friendly activities</p>
-	<p>Total activities: <span id="count">0</span></p>
+<div id="loginPage" class="center">
 
-        <input type="text" id="activity" placeholder="Enter eco activity">
-        <br><br>
+<h1>🌱 EcoTrack</h1>
 
-        <button onclick="addActivity()">Add Activity</button>
+<input id="nameInput" placeholder="Enter your name">
+<input id="emailInput" placeholder="Enter your email">
 
-        <ul id="list"></ul>
+<button onclick="login()">Start Eco Journey</button>
 
-    </div>
+</div>
 
-    <script src="script.js"></script>
+
+<!-- MAIN APP -->
+
+<div id="app" style="display:none">
+
+<div class="sidebar">
+
+<h2>EcoTrack</h2>
+
+<button onclick="showSection('dashboard')">Dashboard</button>
+<button onclick="showSection('activities')">Activities</button>
+<button onclick="showSection('rewards')">Rewards</button>
+<button onclick="showSection('knowledge')">Eco Knowledge</button>
+<button onclick="showSection('leaderboard')">Leaderboard</button>
+<button onclick="showSection('profile')">Profile</button>
+
+</div>
+
+
+<div class="main">
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="section active">
+
+<h1>Dashboard</h1>
+
+<div class="card">Eco Score: <span id="score">0</span> XP</div>
+
+<div class="card">Level: <span id="level">1</span>
+<div class="progressBar"><div id="progress"></div></div>
+</div>
+
+<div class="card">Daily Streak 🔥: <span id="streak">0</span></div>
+
+<div class="card">CO₂ Saved: <span id="co2">0</span> kg</div>
+
+</div>
+
+
+<!-- ACTIVITIES -->
+
+<div id="activities" class="section">
+
+<h1>Log Eco Activity</h1>
+
+<input id="activityInput" placeholder="Example: recycled bottle / walked to college">
+
+<button onclick="addActivity()">Add</button>
+
+<ul id="activityList"></ul>
+
+</div>
+
+
+<!-- REWARDS -->
+
+<div id="rewards" class="section">
+
+<h1>Rewards</h1>
+
+<ul id="badgeList">
+
+<li>🌱 First Step</li>
+<li>🔥 7 Day Streak</li>
+<li>🌍 Eco Warrior (100 XP)</li>
+<li>🌳 Tree Saver (10 actions)</li>
+
+</ul>
+
+</div>
+
+
+<!-- ECO KNOWLEDGE -->
+
+<div id="knowledge" class="section">
+
+<h1>Eco Knowledge</h1>
+
+<p id="ecoTip"></p>
+
+<button onclick="newTip()">New Tip</button>
+
+</div>
+
+
+<!-- LEADERBOARD -->
+
+<div id="leaderboard" class="section">
+
+<h1>Leaderboard</h1>
+
+<ol>
+
+<li>You – <span id="leaderXP">0</span> XP</li>
+<li>GreenHero – 120 XP</li>
+<li>EcoWarrior – 95 XP</li>
+
+</ol>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div id="profile" class="section">
+
+<h1>Profile</h1>
+
+<p>Name: <span id="profileName"></span></p>
+<p>Email: <span id="profileEmail"></span></p>
+
+<p>Total Activities: <span id="totalActivities">0</span></p>
+<p>Total XP: <span id="totalXP">0</span></p>
+
+</div>
+
+
+</div>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>

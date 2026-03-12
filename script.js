@@ -1,52 +1,158 @@
-var list = document.getElementById("list");
-var count = document.getElementById("count");
+let xp = localStorage.getItem("xp") || 0
+let streak = localStorage.getItem("streak") || 0
+let co2 = localStorage.getItem("co2") || 0
+let activities = JSON.parse(localStorage.getItem("activities")) || []
 
-var activities = JSON.parse(localStorage.getItem("ecoActivities")) || [];
+const keywords = [
+"recycle",
+"plastic",
+"walk",
+"transport",
+"bus",
+"bike",
+"electricity",
+"water",
+"plant",
+"tree",
+"bag"
+]
 
-// Show activities on page load
-function showActivities() {
-    list.innerHTML = "";
-    activities.forEach(function (activity, index) {
-        var item = document.createElement("li");
-        item.textContent = activity;
+const tips = [
+"Recycling one aluminium can saves enough energy to run a TV for 3 hours.",
+"Using public transport can reduce carbon emissions by 45%.",
+"LED bulbs use 75% less energy than traditional bulbs.",
+"Carrying a reusable bottle reduces plastic waste.",
+"Walking short distances reduces pollution and improves health."
+]
 
-        var deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "❌";
+function login(){
 
-        deleteBtn.onclick = function () {
-            activities.splice(index, 1);
-            localStorage.setItem("ecoActivities", JSON.stringify(activities));
-            showActivities();
-        };
+let name = document.getElementById("nameInput").value
+let email = document.getElementById("emailInput").value
 
-        item.appendChild(deleteBtn);
-        list.appendChild(item);
-    });
-
-    count.textContent = activities.length;
+if(name=="" || email==""){
+alert("Please enter name and email")
+return
 }
 
-// Add activity function
-function addActivity() {
-    var activityInput = document.getElementById("activity");
-    var activity = activityInput.value.trim();
+localStorage.setItem("name",name)
+localStorage.setItem("email",email)
 
-    if (activity === "") {
-        alert("Please enter an activity 🌱");
-        return;
-    }
+document.getElementById("loginPage").style.display="none"
+document.getElementById("app").style.display="block"
 
-    activities.push(activity);
-    localStorage.setItem("ecoActivities", JSON.stringify(activities));
-    activityInput.value = "";
-    showActivities();
+loadProfile()
+render()
+
 }
 
-// Add Enter key support
-document.getElementById("activity").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        addActivity();
-    }
-});
+function showSection(id){
 
-showActivities();
+document.querySelectorAll(".section").forEach(s=>{
+s.classList.remove("active")
+})
+
+document.getElementById(id).classList.add("active")
+
+}
+
+function addActivity(){
+
+let input = document.getElementById("activityInput")
+let text = input.value.toLowerCase()
+
+let valid = keywords.some(k => text.includes(k))
+
+if(!valid){
+alert("Please enter a valid eco friendly activity")
+return
+}
+
+activities.push(text)
+
+xp = parseInt(xp) + 10
+streak = parseInt(streak) + 1
+co2 = parseFloat(co2) + 0.3
+
+localStorage.setItem("activities",JSON.stringify(activities))
+localStorage.setItem("xp",xp)
+localStorage.setItem("streak",streak)
+localStorage.setItem("co2",co2)
+
+input.value=""
+
+render()
+
+}
+
+function render(){
+
+document.getElementById("score").innerText=xp
+document.getElementById("totalXP").innerText=xp
+document.getElementById("leaderXP").innerText=xp
+
+document.getElementById("streak").innerText=streak
+
+document.getElementById("co2").innerText=co2.toFixed(1)
+
+let level = Math.floor(xp/50)+1
+
+document.getElementById("level").innerText=level
+
+let progress = (xp%50)*2
+
+document.getElementById("progress").style.width=progress+"%"
+
+document.getElementById("totalActivities").innerText=activities.length
+
+let list=document.getElementById("activityList")
+list.innerHTML=""
+
+activities.forEach(a=>{
+let li=document.createElement("li")
+li.innerText=a
+list.appendChild(li)
+})
+
+newTip()
+
+}
+
+function loadProfile(){
+
+document.getElementById("profileName").innerText=localStorage.getItem("name")
+document.getElementById("profileEmail").innerText=localStorage.getItem("email")
+
+}
+
+function newTip(){
+
+let tip=tips[Math.floor(Math.random()*tips.length)]
+
+document.getElementById("ecoTip").innerText=tip
+
+}
+
+document.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+if(document.activeElement.id==="activityInput"){
+
+addActivity()
+
+}
+
+}
+
+})
+
+if(localStorage.getItem("name")){
+
+document.getElementById("loginPage").style.display="none"
+document.getElementById("app").style.display="block"
+
+loadProfile()
+render()
+
+}

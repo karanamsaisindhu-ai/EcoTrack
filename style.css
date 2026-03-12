@@ -1,71 +1,83 @@
-body {
-    background-color: #e8f5e9;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding-top: 60px;
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
 }
 
-.container {
-    background: white;
-    width: 350px;
-    margin: auto;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.center{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100vh;
+gap:10px;
 }
 
-h1 {
-    color: #2e7d32;
+input{
+padding:10px;
+width:250px;
+border:none;
+border-radius:5px;
 }
 
-input {
-    width: 90%;
-    padding: 10px;
-    margin-top: 10px;
+button{
+padding:10px;
+border:none;
+border-radius:5px;
+background:#22c55e;
+color:white;
+cursor:pointer;
 }
 
-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #43a047;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.sidebar{
+position:fixed;
+width:200px;
+height:100vh;
+background:#111827;
+padding:20px;
 }
 
-li {
-    background: #f1f8e9;
-    margin: 10px;
-    padding: 8px 10px;
-    border-radius: 5px;
-
-    display: flex;
-    justify-content: space-between; /* pushes button and text to opposite ends */
-    align-items: center; /* vertically center */
+.sidebar button{
+display:block;
+width:100%;
+margin:10px 0;
 }
 
-li button {
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 0;
-
-    transition: 0.2s;
+.main{
+margin-left:220px;
+padding:30px;
 }
 
-li button:hover {
-    background-color: darkred;
-    transform: scale(1.2);
+.section{
+display:none;
 }
-ul {
-    list-style: none;
-    padding: 0;
-    max-height: 200px; /* max height of list */
-    overflow-y: auto;  /* vertical scroll if items exceed */
-    margin-top: 15px;
+
+.section.active{
+display:block;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+}
+
+.progressBar{
+background:#333;
+height:10px;
+border-radius:10px;
+margin-top:10px;
+}
+
+#progress{
+height:10px;
+background:#22c55e;
+width:0%;
+border-radius:10px;
+}
+
+ul{
+margin-top:20px;
 }
