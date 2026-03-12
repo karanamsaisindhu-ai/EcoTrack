@@ -1,43 +1,35 @@
-🌿ECO TRACK
+EcoTrack – Gamified Sustainability Tracker
 
-**Mini Web Application to Track Eco-Friendly Daily Activities**
+EcoTrack is a web-based application designed to encourage sustainable habits through a simple gamified experience. The platform allows users to log eco-friendly activities such as recycling, saving electricity, walking instead of driving, or using public transport. Each activity rewards the user with experience points (XP), helping them track their environmental impact and progress over time.
 
+The application includes a dashboard that displays key metrics such as eco score, level progression, daily streak, and estimated CO₂ saved. Gamification elements like rewards, badges, and leaderboards are used to motivate consistent participation and engagement.
 
-## Description
+EcoTrack also features an Eco Knowledge section, providing useful sustainability tips and environmental insights to help users make more eco-friendly decisions in their daily lives.
 
-EcoTrack is a beginner-friendly web application built using **HTML, CSS, and JavaScript**.  
-It allows users to:
+User data, activity logs, and progress are stored using browser Local Storage, allowing the application to maintain user progress without requiring a backend server.
 
-- Add daily eco-friendly activities (like planting trees, saving electricity, using public transport)  
-- Delete activities easily  
-- Keep track of total activities with a live counter  
-- Store data persistently, so activities remain even after page refresh  
+Features
 
+User login with local storage
 
-## Features
+Eco activity logging with smart keyword detection
 
-- ✅ Add eco-friendly activities via input or Enter key  
-- ✅ Delete activities individually using the ❌ button  
-- ✅ Live counter of total activities  
-- ✅ Scrollable list for many activities  
-- ✅ Persistent storage using browser localStorage  
-- ✅ Clean and responsive UI  
+Gamified reward system with XP and levels
 
+Progress tracking with dashboard metrics
 
-## How to Use
+Daily streak and CO₂ impact estimation
 
-1. Open `index.html` in your browser  
-2. Type an activity in the input field  
-3. Press **Enter** or click **Add Activity**  
-4. Delete any activity using the ❌ button  
-5. The counter updates automatically and data is saved  
+Eco knowledge tips for sustainability awareness
 
+Simple leaderboard and profile tracking
 
-## Technologies Used
+Technologies Used
 
-- HTML  
-- CSS  
-- JavaScript  
+HTML
 
-##GitHub Link:
-[View Project](https://github.com/YourUsername/EcoTrack)
+CSS
+
+JavaScript
+
+Local Storage
